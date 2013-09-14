@@ -2,8 +2,8 @@
 
 LDLIBS=-lfb303 -lthrift
 LDFLAGS=-Lfb303/cpp
-CFLAGS=-fPIC
-INCLUDE=-I/usr/include/thrift -I/usr/include -Ifb303 -Ifb303/cpp/gen-cpp
+CFLAGS=-fPIC -Wall -Wreturn-type
+INCLUDE=-I/usr/include/thrift -I/usr/include -Ifb303/gen-cpp -Ifb303/gen-cpp -I/usr/local/include -I/usr/local/include/thrift
 LIBRARY=libscribe.a
 SRCS=scribe_c.cpp $(wildcard gen-cpp/*.cpp)
 OBJS=$(SRCS:%.cpp=%.o)
@@ -12,6 +12,8 @@ FB303_OBJS=$(wildcard fb303/cpp/*.o)
 DEBUG=-g3
 
 all: $(LIBRARY)
+	thrift -o fb303 -I /usr/local/include/ -I /usr/local/include/thrift --gen cpp:pure_enums fb303.thrift
+	thrift -o . -I /usr/local/include/ -I /usr/local/include/thrift --gen cpp:pure_enums scribe.thrift
 	@true
 
 %.o:

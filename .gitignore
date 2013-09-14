@@ -1,0 +1,6 @@
+*.a
+gen-cpp
+*.o
+*.la
+*.lo
+*.slo

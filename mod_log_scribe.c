@@ -137,7 +137,7 @@ static void *scribe_log_writer_init(apr_pool_t *p, server_rec *s, const char* na
                                                    &log_scribe_module);
 
     int scribeWriter = 1;
-
+    // TODO fake pipe "|" 
     if(name != NULL && strstr(name, "scribe") == NULL)
       scribeWriter = 0;
 

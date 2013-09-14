@@ -22,9 +22,9 @@ scribe_open(scribe_t *p, const char *host, const int port)
   p->host = strdup(host);
   p->port = port;
 
-  shared_ptr<TTransport> socket(new TSocket(p->host, p->port));
-  shared_ptr<TTransport> transport(new TFramedTransport(socket));
-  shared_ptr<TProtocol>  protocol(new TBinaryProtocol(transport));
+  boost::shared_ptr<TTransport> socket(new TSocket(p->host, p->port));
+  boost::shared_ptr<TTransport> transport(new TFramedTransport(socket));
+  boost::shared_ptr<TProtocol>  protocol(new TBinaryProtocol(transport));
 
   scribeClient *client = new scribeClient(protocol);
 
