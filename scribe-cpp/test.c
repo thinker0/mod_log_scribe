@@ -7,7 +7,7 @@
 int main(void)
 {
   scribe_t *scribe = calloc(1, sizeof(scribe_t));
-  scribe_open(scribe, DEFAULT_HOST", 1463);
+  scribe_open(scribe, DEFAULT_HOST, 1463);
   scribe_write(scribe, DEFAULT_CATEGORY, "this is a message: foo");
   scribe_close(scribe);
   return 0;
